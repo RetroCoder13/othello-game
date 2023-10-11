@@ -36,12 +36,18 @@ function drawGrid(dimensions){
         for(let x=0;x<dimensions;x++){
             for(let y=0;y<dimensions;y++){
                 total++
-                if(positions[`${[x+1,y+1]}`]){
-                    ctx.fillStyle = positions[`${[x+1,y+1]}`]
-                } else if(total%2==0){
+                if(total%2==0){
                     ctx.fillStyle = "#000000"
+                    ctx.fillRect(x*size,y*size,size,size)
                 } else{
                     ctx.fillStyle = "#FFFFFF"
+                    ctx.fillRect(x*size,y*size,size,size)
+                }
+                if(positions[`${[x+1,y+1]}`]){
+                    ctx.fillStyle = positions[`${[x+1,y+1]}`]
+                    ctx.beginPath()
+                    ctx.ellipse(x*size+size/2,y*size+size/2,size/2,size/2,0,0,360)
+                    ctx.fill()
                 }
                 ctx.fillRect(x*size,y*size,size,size)
             }
@@ -54,14 +60,19 @@ function drawGrid(dimensions){
         for(let x=0;x<dimensions;x++){
             for(let y=0;y<dimensions;y++){
                 total++
-                if(positions[`${[x+1,y+1]}`]){
-                    ctx.fillStyle = positions[`${[x+1,y+1]}`]
-                } else if(total%2==0){
+                if(total%2==0){
                     ctx.fillStyle = "#000000"
+                    ctx.fillRect(x*size,y*size,size,size)
                 } else{
                     ctx.fillStyle = "#FFFFFF"
+                    ctx.fillRect(x*size,y*size,size,size)
                 }
-                ctx.fillRect(x*size,y*size,size,size)
+                if(positions[`${[x+1,y+1]}`]){
+                    ctx.fillStyle = positions[`${[x+1,y+1]}`]
+                    ctx.beginPath()
+                    ctx.ellipse(x*size+size/2,y*size+size/2,size/2,size/2,0,0,360)
+                    ctx.fill()
+                }
             }
             if(dimensions%2==0){
                 total++
