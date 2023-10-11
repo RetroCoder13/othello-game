@@ -77,10 +77,40 @@ canvas.addEventListener('mousedown',function(e){
     if(aspect_ratio<=1 && e.offsetX <= canvas.width){
         size = canvas.width/dimensions
         positions[`${[Math.ceil(e.offsetX%(dimensions*size)/size),Math.ceil(e.offsetY%(dimensions*size)/size)]}`] = document.getElementById('colour').value
+        logic(`${[Math.ceil(e.offsetX%(dimensions*size)/size),Math.ceil(e.offsetY%(dimensions*size)/size)]}`,document.getElementById('colour').value)
     } else if(aspect_ratio>1 && e.offsetX <= canvas.height) {
         size = canvas.height/dimensions
         positions[`${[Math.ceil(e.offsetX%(dimensions*size)/size),Math.ceil(e.offsetY%(dimensions*size)/size)]}`] = document.getElementById('colour').value
+        logic(`${[Math.ceil(e.offsetX%(dimensions*size)/size),Math.ceil(e.offsetY%(dimensions*size)/size)]}`,document.getElementById('colour').value)
     }
 })
+
+function logic(position,colour){
+    position = position.split(',')
+    if(positions[`${[parseInt(position[0])-2,parseInt(position[1])-2]}`] == colour){
+        positions[`${[parseInt(position[0])-1,parseInt(position[1])-1]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0]),parseInt(position[1])-2]}`] == colour){
+        positions[`${[parseInt(position[0]),parseInt(position[1])-1]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0])+2,parseInt(position[1])-2]}`] == colour){
+        positions[`${[parseInt(position[0])+1,parseInt(position[1])-1]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0])+2,parseInt(position[1])]}`] == colour){
+        positions[`${[parseInt(position[0])+1,parseInt(position[1])]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0])+2,parseInt(position[1])+2]}`] == colour){
+        positions[`${[parseInt(position[0])+1,parseInt(position[1])+1]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0]),parseInt(position[1])+2]}`] == colour){
+        positions[`${[parseInt(position[0]),parseInt(position[1])+1]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0])-2,parseInt(position[1])+2]}`] == colour){
+        positions[`${[parseInt(position[0])-1,parseInt(position[1])+1]}`] = colour
+    }
+    if(positions[`${[parseInt(position[0])-2,parseInt(position[1])]}`] == colour){
+        positions[`${[parseInt(position[0])-1,parseInt(position[1])]}`] = colour
+    }
+}
 
 requestAnimationFrame(update)
