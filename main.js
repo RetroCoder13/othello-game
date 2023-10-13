@@ -98,29 +98,116 @@ canvas.addEventListener('mousedown',function(e){
 
 function logic(position,colour){
     position = position.split(',')
-    if(positions[`${[parseInt(position[0])-2,parseInt(position[1])-2]}`] == colour){
-        positions[`${[parseInt(position[0])-1,parseInt(position[1])-1]}`] = colour
+    // if(positions[`${[parseInt(position[0])-2,parseInt(position[1])-2]}`] == colour && positions[`${[parseInt(position[0])-1,parseInt(position[1])-1]}`]){
+    //     positions[`${[parseInt(position[0])-1,parseInt(position[1])-1]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0]),parseInt(position[1])-2]}`] == colour && positions[`${[parseInt(position[0]),parseInt(position[1])-1]}`]){
+    //     positions[`${[parseInt(position[0]),parseInt(position[1])-1]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0])+2,parseInt(position[1])-2]}`] == colour && positions[`${[parseInt(position[0])+1,parseInt(position[1])-1]}`]){
+    //     positions[`${[parseInt(position[0])+1,parseInt(position[1])-1]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0])+2,parseInt(position[1])]}`] == colour && positions[`${[parseInt(position[0])+1,parseInt(position[1])]}`]){
+    //     positions[`${[parseInt(position[0])+1,parseInt(position[1])]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0])+2,parseInt(position[1])+2]}`] == colour && positions[`${[parseInt(position[0])+1,parseInt(position[1])+1]}`]){
+    //     positions[`${[parseInt(position[0])+1,parseInt(position[1])+1]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0]),parseInt(position[1])+2]}`] == colour && positions[`${[parseInt(position[0]),parseInt(position[1])+1]}`]){
+    //     positions[`${[parseInt(position[0]),parseInt(position[1])+1]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0])-2,parseInt(position[1])+2]}`] == colour && positions[`${[parseInt(position[0])-1,parseInt(position[1])+1]}`]){
+    //     positions[`${[parseInt(position[0])-1,parseInt(position[1])+1]}`] = colour
+    // }
+    // if(positions[`${[parseInt(position[0])-2,parseInt(position[1])]}`] == colour && positions[`${[parseInt(position[0])-1,parseInt(position[1])]}`]){
+    //     positions[`${[parseInt(position[0])-1,parseInt(position[1])]}`] = colour
+    // }
+    let newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0])-i,parseInt(position[1])-i]}`]){
+            if(positions[`${[parseInt(position[0])-i,parseInt(position[1])-i]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0])-i,parseInt(position[1])-i]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0]),parseInt(position[1])-2]}`] == colour){
-        positions[`${[parseInt(position[0]),parseInt(position[1])-1]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0]),parseInt(position[1])-i]}`]){
+            if(positions[`${[parseInt(position[0]),parseInt(position[1])-i]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0]),parseInt(position[1])-i]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0])+2,parseInt(position[1])-2]}`] == colour){
-        positions[`${[parseInt(position[0])+1,parseInt(position[1])-1]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0])+i,parseInt(position[1])-i]}`]){
+            if(positions[`${[parseInt(position[0])+i,parseInt(position[1])-i]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0])+i,parseInt(position[1])-i]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0])+2,parseInt(position[1])]}`] == colour){
-        positions[`${[parseInt(position[0])+1,parseInt(position[1])]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0])+i,parseInt(position[1])]}`]){
+            if(positions[`${[parseInt(position[0])+i,parseInt(position[1])]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0])+i,parseInt(position[1])]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0])+2,parseInt(position[1])+2]}`] == colour){
-        positions[`${[parseInt(position[0])+1,parseInt(position[1])+1]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0])+i,parseInt(position[1])+i]}`]){
+            if(positions[`${[parseInt(position[0])+i,parseInt(position[1])+i]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0])+i,parseInt(position[1])+i]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0]),parseInt(position[1])+2]}`] == colour){
-        positions[`${[parseInt(position[0]),parseInt(position[1])+1]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0]),parseInt(position[1])+i]}`]){
+            if(positions[`${[parseInt(position[0]),parseInt(position[1])+i]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0]),parseInt(position[1])+i]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0])-2,parseInt(position[1])+2]}`] == colour){
-        positions[`${[parseInt(position[0])-1,parseInt(position[1])+1]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0])-i,parseInt(position[1])+i]}`]){
+            if(positions[`${[parseInt(position[0])-i,parseInt(position[1])+i]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0])-i,parseInt(position[1])+i]}`] = colour
+        }
     }
-    if(positions[`${[parseInt(position[0])-2,parseInt(position[1])]}`] == colour){
-        positions[`${[parseInt(position[0])-1,parseInt(position[1])]}`] = colour
+
+    newPositions = JSON.parse(JSON.stringify(positions))
+    for(let i=1;i<dimensions;i++){
+        if(positions[`${[parseInt(position[0])-i,parseInt(position[1])]}`]){
+            if(positions[`${[parseInt(position[0])-i,parseInt(position[1])]}`] == colour){
+                positions = newPositions
+                break
+            }
+            newPositions[`${[parseInt(position[0])-i,parseInt(position[1])]}`] = colour
+        }
     }
 }
 
