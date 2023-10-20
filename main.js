@@ -2,6 +2,7 @@ const canvas = document.getElementById('game')
 const ctx = canvas.getContext('2d')
 
 var aspect_ratio
+var savedPositions = {}
 
 var positions = {}
 var dimensions = 8
@@ -11,9 +12,9 @@ function calculateHeight(){
     canvas.height = window.innerHeight
 
     if(aspect_ratio<=1){
-        document.getElementById('colour').style.left = canvas.width + 10 + "px"
+        document.getElementById('options').style.left = canvas.width + 10 + "px"
     } else {
-        document.getElementById('colour').style.left = canvas.height + 10 + "px"
+        document.getElementById('options').style.left = canvas.height + 10 + "px"
     }
 
     aspect_ratio = canvas.width/canvas.height
@@ -212,3 +213,37 @@ function logic(position,colour){
 }
 
 requestAnimationFrame(update)
+
+function save(){
+    eval(`savedPositions["${prompt("Save as")}"] = positions`)
+    localStorage.setItem("othello-game-positions",JSON.stringify(savedPositions))
+    loadSaveData()
+}
+
+function loadSaveData(){
+    if(localStorage.getItem("othello-game-positions")){
+        savedPositions = JSON.parse(localStorage.getItem("othello-game-positions"))
+        document.getElementById("load").innerHTML = "<option selected disabled>Load</option>"
+
+        for(let i=0;i<Object.keys(savedPositions).length;i++){
+            document.getElementById("load").innerHTML += `<option value="${Object.keys(savedPositions)[i]}">${Object.keys(savedPositions)[i]}</option>`
+        }
+    }
+}
+
+loadSaveData()
+
+function load(){
+    positions = eval(`savedPositions["${document.getElementById("load").value}"]`)
+}
+
+function deleteSave(){
+    eval(`delete savedPositions["${document.getElementById("load").value}"]`)
+    localStorage.setItem("othello-game-positions",JSON.stringify(savedPositions))
+    newGame()
+}
+
+function newGame(){
+    positions = {}
+    loadSaveData()
+}
