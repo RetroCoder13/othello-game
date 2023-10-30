@@ -60,7 +60,7 @@ function drawGrid(dimensions){
                 if((total-added)%dimensions == 1){
                     ctx.fillStyle = "#AAA"
                     ctx.textAlign = "center"
-                    ctx.fillText(String.fromCharCode(65+x),x*size+size/2,y*size+30)
+                    ctx.fillText(String.fromCharCode(65+x),x*size+size/2,y*size+(size/4))
                 }
             }
             if(dimensions%2==0){
@@ -95,7 +95,7 @@ function drawGrid(dimensions){
                 if((total-added)%dimensions == 1){
                     ctx.fillStyle = "#AAA"
                     ctx.textAlign = "center"
-                    ctx.fillText(String.fromCharCode(65+x),x*size+size/2,y*size+30)
+                    ctx.fillText(String.fromCharCode(65+x),x*size+size/2,y*size+(size/4))
                 }
             }
             if(dimensions%2==0){
