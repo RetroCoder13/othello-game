@@ -41,15 +41,9 @@ function drawGrid(dimensions){
                 total++
                 if(total%2==0){
                     ctx.fillStyle = "#000000"
-                    if(total<dimensions){
-                        ctx.fillText(total-1,x*size,y*size)
-                    }
                     ctx.fillRect(x*size,y*size,size,size)
                 } else{
                     ctx.fillStyle = "#FFFFFF"
-                    if(total<dimensions){
-                        ctx.fillText(total-1,x*size,y*size)
-                    }
                     ctx.fillRect(x*size,y*size,size,size)
                 }
                 if(positions[`${[x+1,y+1]}`]){
@@ -58,7 +52,16 @@ function drawGrid(dimensions){
                     ctx.ellipse(x*size+size/2,y*size+size/2,size/2,size/2,0,0,360)
                     ctx.fill()
                 }
-                ctx.fillRect(x*size,y*size,size,size)
+                if(total<dimensions+1){
+                    ctx.fillStyle = "#AAA"
+                    ctx.textAlign = "start"
+                    ctx.fillText(y+1,x*size,y*size+size/2)
+                }
+                if((total-added)%dimensions == 1){
+                    ctx.fillStyle = "#AAA"
+                    ctx.textAlign = "center"
+                    ctx.fillText(String.fromCharCode(65+x),x*size+size/2,y*size+30)
+                }
             }
             if(dimensions%2==0){
                 total++
