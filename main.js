@@ -33,9 +33,9 @@ function update(){
 function drawGrid(dimensions){
     let total = 0
     let added = 0
-    ctx.font = "30px Arial"
     if(aspect_ratio<=1){
         let size = canvas.width/dimensions
+        ctx.font = `${size/4}px Arial`
         for(let x=0;x<dimensions;x++){
             for(let y=0;y<dimensions;y++){
                 total++
@@ -70,6 +70,7 @@ function drawGrid(dimensions){
         }
     } else {
         let size = canvas.height/dimensions
+        ctx.font = `${size/4}px Arial`
         for(let x=0;x<dimensions;x++){
             for(let y=0;y<dimensions;y++){
                 total++
